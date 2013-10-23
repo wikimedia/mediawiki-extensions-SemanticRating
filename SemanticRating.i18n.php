@@ -28,6 +28,22 @@ $messages['en'] = array(
 	'semanticrating-desc' => 'Allows users to rate items between 1 and 5 with stars'
 );
 
+/** Message documentation (Message documentation)
+ */
 $messages['qqq'] = array(
-	'semanticrating-desc' => '{{desc|name=Semantic Rating|url=http://www.mediawiki.org/wiki/Extension:SemanticRating}}'
+	'semanticrating-desc' => '{{desc|name=Semantic Rating|url=http://www.mediawiki.org/wiki/Extension:SemanticRating}}',
+);
+
+/** German (Deutsch)
+ * @author Metalhead64
+ */
+$messages['de'] = array(
+	'semanticrating-desc' => 'Ermöglicht es Benutzern, Objekte mit 1 bis 5 Sternen zu bewerten',
+);
+
+/** Russian (русский)
+ * @author Okras
+ */
+$messages['ru'] = array(
+	'semanticrating-desc' => 'Позволяет пользователям поставить элементам оценку от 1 до 5 звёзд',
 );
