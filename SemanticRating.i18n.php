@@ -41,9 +41,37 @@ $messages['de'] = array(
 	'semanticrating-desc' => 'Ermöglicht es Benutzern, Objekte mit 1 bis 5 Sternen zu bewerten',
 );
 
+/** Japanese (日本語)
+ * @author Shirayuki
+ */
+$messages['ja'] = array(
+	'semanticrating-desc' => '利用者が、星 1 つから 5 つの範囲で項目を評価できるようにする',
+);
+
+/** Korean (한국어)
+ * @author Hym411
+ */
+$messages['ko'] = array(
+	'semanticrating-desc' => '사용자에게 별 한개에서 다섯개를 이용해 항목의 별점을 매길 수 있게 합니다.',
+);
+
+/** Macedonian (македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'semanticrating-desc' => 'Им овозможува на корисниците да ги оценуваат предметите од 1 до 5 со ѕвездички',
+);
+
 /** Russian (русский)
  * @author Okras
  */
 $messages['ru'] = array(
 	'semanticrating-desc' => 'Позволяет пользователям поставить элементам оценку от 1 до 5 звёзд',
+);
+
+/** Ukrainian (українська)
+ * @author Andriykopanytsia
+ */
+$messages['uk'] = array(
+	'semanticrating-desc' => 'Дозволяє користувачам оцінювати елементи від 1 до 5 з зірок',
 );
