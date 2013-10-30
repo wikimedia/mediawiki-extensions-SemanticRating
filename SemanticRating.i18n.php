@@ -34,6 +34,13 @@ $messages['qqq'] = array(
 	'semanticrating-desc' => '{{desc|name=Semantic Rating|url=http://www.mediawiki.org/wiki/Extension:SemanticRating}}',
 );
 
+/** Asturian (asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'semanticrating-desc' => 'Permite a los usuarios puntuar los elementos ente 1 y 5 estrelles',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
