@@ -48,6 +48,27 @@ $messages['de'] = array(
 	'semanticrating-desc' => 'Ermöglicht es Benutzern, Objekte mit 1 bis 5 Sternen zu bewerten',
 );
 
+/** Spanish (español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'semanticrating-desc' => 'Permite a los usuarios evaluar los artículos con una escala de 1 a 5 estrellas',
+);
+
+/** French (français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'semanticrating-desc' => 'Permet aux utilisateurs de classer les éléments entre 1 et 5 avec des étoiles',
+);
+
+/** Galician (galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'semanticrating-desc' => 'Permite aos usuarios avaliar os elementos entre 1 e 5 estrelas',
+);
+
 /** Japanese (日本語)
  * @author Shirayuki
  */
