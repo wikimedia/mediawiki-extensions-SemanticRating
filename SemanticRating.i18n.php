@@ -55,6 +55,13 @@ $messages['es'] = array(
 	'semanticrating-desc' => 'Permite a los usuarios evaluar los artículos con una escala de 1 a 5 estrellas',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'semanticrating-desc' => 'اجازه می‌دهد کاربران موردها بین ۱ تا ۵ ستاره رتبه‌دهی کنند',
+);
+
 /** French (français)
  * @author Gomoko
  */
