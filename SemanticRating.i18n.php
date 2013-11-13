@@ -76,6 +76,13 @@ $messages['gl'] = array(
 	'semanticrating-desc' => 'Permite aos usuarios avaliar os elementos entre 1 e 5 estrelas',
 );
 
+/** Italian (italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'semanticrating-desc' => 'Consente agli utenti di valutare gli elementi da 1 a 5 con stelle',
+);
+
 /** Japanese (日本語)
  * @author Shirayuki
  */
