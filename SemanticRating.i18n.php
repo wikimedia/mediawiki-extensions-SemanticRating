@@ -104,6 +104,13 @@ $messages['mk'] = array(
 	'semanticrating-desc' => 'Им овозможува на корисниците да ги оценуваат предметите од 1 до 5 со ѕвездички',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'semanticrating-desc' => 'Maakt het voor gebruikers mogelijk items te waarderen met 1 tot 5 sterren',
+);
+
 /** Russian (русский)
  * @author Okras
  */
