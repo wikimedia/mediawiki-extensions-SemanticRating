@@ -20,21 +20,23 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-window.setrating = function(rating, input_id) {
-	jQuery("#" + input_id).attr('value', rating);
-	var i = 1;
-	while (i <= rating) {
-		var star = jQuery("#" + input_id + "_s_" + i);
-		var src = star.attr('src');
-		src = src.replace("grey", "yellow");
-		star.attr('src', src);
-		i++;
+(function($) {
+	window.setrating = function(rating, input_id) {
+		$("#" + input_id).attr('value', rating);
+		var i = 1;
+		while (i <= rating) {
+			var star = $("#" + input_id + "_s_" + i);
+			var src = star.attr('src');
+			src = src.replace("grey", "yellow");
+			star.attr('src', src);
+			i++;
+		}
+		while (i < 6) {
+			var star = $("#" + input_id + "_s_" + i);
+			var src = star.attr('src');
+			src = src.replace("yellow", "grey");
+			star.attr('src', src);
+			i++;
+		}
 	}
-	while (i < 6) {
-		var star = jQuery("#" + input_id + "_s_" + i);
-		var src = star.attr('src');
-		src = src.replace("yellow", "grey");
-		star.attr('src', src);
-		i++;
-	}
-}
+}(jQuery));

@@ -38,12 +38,23 @@ if (version_compare(SF_VERSION, '2.5.2', 'lt')) {
 	die('<b>Error:</b> This version of SemanticRating is only compatible with Semantic Forms 2.5.2 or above.');
 }
 
-$wgExtensionCredits['parserhook'][] = array (
+$wgExtensionCredits['semantic'][] = array (
 	'name' => 'SemanticRating',
 	'version' => '1.0',
-	'author' => 'Cindy Cicalese',
-	'descriptionmsg' => 'semanticrating-desc'
+	'author' => array(
+		'[https://www.mediawiki.org/wiki/User:Cindy.cicalese Cindy Cicalese]'
+	),
+	'descriptionmsg' => 'semanticrating-desc',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Semantic_Rating'
 );
+
+// Special thanks to
+// [https://www.mediawiki.org/wiki/User:Bernadette Bernadette Clemente]
+// for the original idea that inspired this extension and to Kelly Hatfield
+// for an early implementation of this extension.
+
+$wgAutoloadClasses['SemanticRating'] =
+	__DIR__ . '/SemanticRating.class.php';
 
 $wgExtensionMessagesFiles['SemanticRating'] =
 	__DIR__ . '/SemanticRating.i18n.php';
@@ -52,97 +63,37 @@ $wgExtensionMessagesFiles['SemanticRatingMagic'] =
 	__DIR__ . '/SemanticRating.i18n.magic.php';
 
 $wgResourceModules['ext.SemanticRating'] = array(
-	'localBasePath' => dirname(__FILE__),
+	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'SemanticRating',
-	'scripts' => 'SemanticRating.js'
+	'scripts' => 'scripts/SemanticRating.js'
 );
 
 $wgHooks['ParserFirstCallInit'][] = 'efSemanticRatingParserFunction_Setup';
 
-function efSemanticRatingParserFunction_Setup (& $parser) {
+function efSemanticRatingParserFunction_Setup (&$parser) {
 	$parser->setFunctionHook('rating', 'renderRating');
 	global $sfgFormPrinter;
 	$sfgFormPrinter->setInputTypeHook('rating', 'editRating', array());
 	return true;
 }
 
+$SemanticRating_ImagePath = $wgServer . $wgScriptPath .
+	"/extensions/SemanticRating/images/";
+
 function renderRating($parser, $input) {
-	$output = SemanticRating::renderRating($input);
+	global $SemanticRating_ImagePath;
+	$instance = new SemanticRating;
+	$output = $instance->renderRating($input, $SemanticRating_ImagePath);
 	return array($parser->insertStripItem( $output, $parser->mStripState ),
 		'noparse' => false);
 }
 
 function editRating($cur_value, $input_name, $is_mandatory, $is_disabled,
 	$field_args) {
-	$output = SemanticRating::editRating($cur_value, $input_name);
+	global $wgOut, $SemanticRating_ImagePath;
+	$wgOut->addModules('ext.SemanticRating');
+	$instance = new SemanticRating;
+	$output = $instance->editRating($cur_value, $input_name,
+		$SemanticRating_ImagePath);
 	return array($output, null);
-}
-
-class SemanticRating {
-
-	function renderRating($input) {
-		global $wgServer, $wgScriptPath;
-		$path = $wgServer . $wgScriptPath . "/extensions/SemanticRating/";
-
-		$output = "<table style='display:inline;'><td>";
-		if ($input < 0) {
-			$input = 0;
-		} else if ($input > 5) {
-			$input = 5;
-		}
-		$i = 1;
-		while ($i <= $input) {
-			$output .=
-				"<img src='$path" . "yellowstar.png' />";
-			$i++;
-		}
-		if ($input - $i + 1 != 0) {
-			$output .=
-				"<img src='$path" . "halfstar.png' />";
-			$i++;
-		}
-		while ($i < 6) {
-			$output .=
-				"<img src='$path" . "greystar.png' />";
-			$i++;
-		}
-		$output .= "</td></table>";
-		return $output;
-	}
-
-	function editRating($cur_value, $input_name) {
-	
-		global $wgOut;
-		$wgOut->addModules('ext.SemanticRating');
-	
-		if (!is_numeric($cur_value) || $cur_value < 1 || $cur_value > 5) {
-			$cur_value = 1;
-		}
-	
-		$output = "<table style='display:inline'><td>";
-	
-		global $sfgFieldNum;
-		$input_id = "input_$sfgFieldNum";
-		$output .= '<input type="hidden" id="' . $input_id . '" name="' .
-			$input_name . '" value="' . $cur_value . '" />';
-	
-		global $wgServer, $wgScriptPath;
-		$path = $wgServer . $wgScriptPath . "/extensions/SemanticRating/";
-	
-		$src =	$path . 'yellowstar.png';
-		for($i = 1; $i < ($cur_value + 1); $i++) {
-			$output .= '<img src="' . $src . '" id="' . $input_id . '_s_' . $i .
-				'" onclick="setrating(' . $i . ",'" . $input_id . "'" . ');" />';
-		}
-			
-		$src =	$path . 'greystar.png';
-		for($i = $i; $i < 6; $i++) {
-			$output .= '<img src="' . $src . '" id="' . $input_id . '_s_' . $i .
-				'" onclick="setrating(' . $i . ",'" . $input_id . "'" . ');" />';
-		}
-			
-		$output .= "</td></table>";
-	
-		return $output;
-	}
 }
