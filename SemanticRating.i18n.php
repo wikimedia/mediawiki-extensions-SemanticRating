@@ -29,9 +29,10 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Kghbln
  */
 $messages['qqq'] = array(
-	'semanticrating-desc' => '{{desc|name=Semantic Rating|url=http://www.mediawiki.org/wiki/Extension:SemanticRating}}',
+	'semanticrating-desc' => '{{desc|name=Semantic Rating|url=http://www.mediawiki.org/wiki/Extension:Semantic_Rating}}',
 );
 
 /** Asturian (asturianu)
@@ -123,4 +124,11 @@ $messages['ru'] = array(
  */
 $messages['uk'] = array(
 	'semanticrating-desc' => 'Дозволяє користувачам оцінювати елементи від 1 до 5 з зірок',
+);
+
+/** Simplified Chinese (中文（简体）‎)
+ * @author Yfdyh000
+ */
+$messages['zh-hans'] = array(
+	'semanticrating-desc' => '允许用户以1到5星评分',
 );
