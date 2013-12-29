@@ -49,6 +49,13 @@ $messages['de'] = array(
 	'semanticrating-desc' => 'Ermöglicht es Benutzern, Objekte mit 1 bis 5 Sternen zu bewerten',
 );
 
+/** Lower Sorbian (dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'semanticrating-desc' => 'Zmóžnja wužywarjam zapiski z 1 gwězdku resp. až do 5 gwězdkow pógódnośiś',
+);
+
 /** Spanish (español)
  * @author Fitoschido
  */
@@ -75,6 +82,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'semanticrating-desc' => 'Permite aos usuarios avaliar os elementos entre 1 e 5 estrelas',
+);
+
+/** Upper Sorbian (hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'semanticrating-desc' => 'Zmóžnja wužiwarjam zapiski z 1 hwěžku resp. hač do 5 hwěžkow pohódnoćić',
 );
 
 /** Italian (italiano)
