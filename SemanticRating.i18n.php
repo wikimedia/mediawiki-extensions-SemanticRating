@@ -133,6 +133,13 @@ $messages['nl'] = array(
 	'semanticrating-desc' => 'Maakt het voor gebruikers mogelijk items te waarderen met 1 tot 5 sterren',
 );
 
+/** tarandíne (tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'semanticrating-desc' => "Permette a l'utinde de valutà vôsce 'mbrà 1 e 5 stelle",
+);
+
 /** Russian (русский)
  * @author Okras
  */
