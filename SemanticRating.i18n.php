@@ -133,6 +133,13 @@ $messages['nl'] = array(
 	'semanticrating-desc' => 'Maakt het voor gebruikers mogelijk items te waarderen met 1 tot 5 sterren',
 );
 
+/** Occitan (occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'semanticrating-desc' => "Permet als utilizaires de classar los elements entre 1 e 5 amb d'estelas",
+);
+
 /** tarandíne (tarandíne)
  * @author Joetaras
  */
