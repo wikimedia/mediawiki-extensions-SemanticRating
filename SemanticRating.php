@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Copyright (c) 2013 The MITRE Corporation
  *
@@ -40,7 +39,7 @@ if (version_compare(SF_VERSION, '2.5.2', 'lt')) {
 
 $wgExtensionCredits['semantic'][] = array (
 	'name' => 'SemanticRating',
-	'version' => '1.0',
+	'version' => '1.1.0',
 	'author' => array(
 		'[https://www.mediawiki.org/wiki/User:Cindy.cicalese Cindy Cicalese]'
 	),
@@ -56,6 +55,7 @@ $wgExtensionCredits['semantic'][] = array (
 $wgAutoloadClasses['SemanticRating'] =
 	__DIR__ . '/SemanticRating.class.php';
 
+$wgMessagesDirs['SemanticRating'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['SemanticRating'] =
 	__DIR__ . '/SemanticRating.i18n.php';
 
