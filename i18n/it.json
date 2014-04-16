@@ -1,8 +1,8 @@
 {
-    "@metadata": {
-        "authors": [
-            "Beta16"
-        ]
-    },
-    "semanticrating-desc": "Consente agli utenti di valutare gli elementi da 1 a 5 con stelle"
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"semanticrating-desc": "Consente agli utenti di valutare gli elementi da 1 a 5 con stelle"
 }

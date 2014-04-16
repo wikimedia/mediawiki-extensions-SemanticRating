@@ -1,8 +1,8 @@
 {
-    "@metadata": {
-        "authors": [
-            "Xuacu"
-        ]
-    },
-    "semanticrating-desc": "Permite a los usuarios puntuar los elementos ente 1 y 5 estrelles"
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"semanticrating-desc": "Permite a los usuarios puntuar los elementos ente 1 y 5 estrelles"
 }

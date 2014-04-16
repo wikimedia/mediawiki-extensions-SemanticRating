@@ -1,8 +1,8 @@
 {
-    "@metadata": {
-        "authors": [
-            "Shirayuki"
-        ]
-    },
-    "semanticrating-desc": "利用者が、星 1 つから 5 つの範囲で項目を評価できるようにする"
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"semanticrating-desc": "利用者が、星 1 つから 5 つの範囲で項目を評価できるようにする"
 }

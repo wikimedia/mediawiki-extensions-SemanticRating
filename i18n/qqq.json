@@ -1,8 +1,8 @@
 {
-    "@metadata": {
-        "authors": [
-            "Kghbln"
-        ]
-    },
-    "semanticrating-desc": "{{desc|name=Semantic Rating|url=http://www.mediawiki.org/wiki/Extension:Semantic_Rating}}"
+	"@metadata": {
+		"authors": [
+			"Kghbln"
+		]
+	},
+	"semanticrating-desc": "{{desc|name=Semantic Rating|url=http://www.mediawiki.org/wiki/Extension:Semantic_Rating}}"
 }
