@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Metalhead64"
+			"Metalhead64",
+			"Kghbln"
 		]
 	},
-	"semanticrating-desc": "Ermöglicht es Benutzern, Objekte mit 1 bis 5 Sternen zu bewerten"
+	"semanticrating-desc": "Ermöglicht es Benutzern, Objekte mit ein bis fünf Sternen zu bewerten"
 }
