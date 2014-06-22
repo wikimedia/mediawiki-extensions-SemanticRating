@@ -39,7 +39,7 @@ if (version_compare(SF_VERSION, '2.5.2', 'lt')) {
 
 $wgExtensionCredits['semantic'][] = array (
 	'name' => 'SemanticRating',
-	'version' => '1.1.0',
+	'version' => '1.2',
 	'author' => array(
 		'[https://www.mediawiki.org/wiki/User:Cindy.cicalese Cindy Cicalese]'
 	),
@@ -84,8 +84,7 @@ function renderRating($parser, $input) {
 	global $SemanticRating_ImagePath;
 	$instance = new SemanticRating;
 	$output = $instance->renderRating($input, $SemanticRating_ImagePath);
-	return array($parser->insertStripItem( $output, $parser->mStripState ),
-		'noparse' => false);
+	return $output;
 }
 
 function editRating($cur_value, $input_name, $is_mandatory, $is_disabled,

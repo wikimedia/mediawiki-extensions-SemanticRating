@@ -26,9 +26,7 @@ class SemanticRating {
 
 	public function renderRating($input, $imagepath) {
 
-		$output =
-			Html::openElement('table', array('style' => 'display:inline;')) .
-			Html::openElement('td');
+		$output = Html::openElement('span');
 
 		if ($input < 0) {
 			$input = 0;
@@ -57,8 +55,7 @@ class SemanticRating {
 		}
 
 		$output .=
-			Html::closeElement('td') .
-			Html::closeElement('table');
+			Html::closeElement('span');
 
 		return $output;
 	}
