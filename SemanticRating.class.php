@@ -62,8 +62,8 @@ class SemanticRating {
 
 	public function editRating($cur_value, $input_name, $imagepath) {
 	
-		if (!is_numeric($cur_value) || $cur_value < 1 || $cur_value > 5) {
-			$cur_value = 1;
+		if (!is_numeric($cur_value) || $cur_value < 0 || $cur_value > 5) {
+			$cur_value = 0;
 		}
 	
 		$output =

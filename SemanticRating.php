@@ -39,7 +39,7 @@ if (version_compare(SF_VERSION, '2.5.2', 'lt')) {
 
 $wgExtensionCredits['semantic'][] = array (
 	'name' => 'SemanticRating',
-	'version' => '1.2',
+	'version' => '1.3',
 	'author' => array(
 		'[https://www.mediawiki.org/wiki/User:Cindy.cicalese Cindy Cicalese]'
 	),
@@ -71,6 +71,10 @@ $wgResourceModules['ext.SemanticRating'] = array(
 $wgHooks['ParserFirstCallInit'][] = 'efSemanticRatingParserFunction_Setup';
 
 function efSemanticRatingParserFunction_Setup (&$parser) {
+	global $SemanticRating_Parse;
+	if (!isset($SemanticRating_Parse)) {
+		$SemanticRating_Parse = true;
+	}
 	$parser->setFunctionHook('rating', 'renderRating');
 	global $sfgFormPrinter;
 	$sfgFormPrinter->setInputTypeHook('rating', 'editRating', array());
@@ -84,6 +88,11 @@ function renderRating($parser, $input) {
 	global $SemanticRating_ImagePath;
 	$instance = new SemanticRating;
 	$output = $instance->renderRating($input, $SemanticRating_ImagePath);
+	global $SemanticRating_Parse;
+	if ($SemanticRating_Parse) {
+		$output = array($parser->insertStripItem($output, $parser->mStripState),
+			'noparse' => false, 'isHTML' => true);
+	}
 	return $output;
 }
 
