@@ -1,7 +1,6 @@
 <?php
-
 /*
- * Copyright (c) 2013 The MITRE Corporation
+ * Copyright (c) 2014 The MITRE Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -22,89 +21,92 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-class SemanticRating {
+class SemanticRatingFormInput extends SFFormInput {
 
-	public function renderRating($input, $imagepath) {
+	private static $imagepath = null;
 
-		$output = Html::openElement('span');
+	public static function setImagePath($value) {
+		self::$imagepath = $value;
+	}
 
-		if ($input < 0) {
-			$input = 0;
-		} else if ($input > 5) {
-			$input = 5;
+	public function __construct($input_number, $cur_value, $input_name,
+		$disabled, $other_args) {
+		parent::__construct($input_number, $cur_value, $input_name, $disabled,
+			$other_args);
+		if (array_key_exists('max', $this->mOtherArgs)) {
+			$this->mMax = $this->mOtherArgs['max'];
+		} else {
+			$this->mMax = $GLOBALS['SemanticRating_DefaultMax'];
 		}
+	}
+
+	public static function getName() {
+		return 'rating';
+	}
+
+	public function getHtmlText() {
+
+		if (!is_numeric($this->mCurrentValue) || $this->mCurrentValue < 0 ||
+			$this->mCurrentValue > $this->mMax) {
+			$this->mCurrentValue = 0;
+		}
+
+		$output =
+			Html::openElement('table', array('style' => 'display:inline;')) .
+			Html::openElement('td');
+
+		$input_id = "input_" . $GLOBALS['sfgFieldNum'];
+		$output .= Html::element('input', array(
+			'type' => 'hidden',
+			'id' => $input_id,
+			'name' => $this->mInputName,
+			'value' => $this->mCurrentValue
+			));
 
 		$i = 1;
-		while ($i <= $input) {
-			$output .=
-				Html::element('img',
-					array('src' => $imagepath . 'yellowstar.png'));
+
+		$src =	self::$imagepath . 'yellowstar.png';
+		while ($i < $this->mCurrentValue + 1) {
+			$output .= Html::element('img', array(
+				'src' => $src,
+				'id' => $input_id . '_s_' . $i,
+				'onclick' => 'semanticRating.setrating(' . $i . ",'" . $input_id . "'," .
+					$this->mMax . ');'
+				));
 			$i++;
 		}
-		if ($input - $i + 1 != 0) {
-			$output .=
-				Html::element('img',
-					array('src' => $imagepath . 'halfstar.png'));
-			$i++;
-		}
-		while ($i < 6) {
-			$output .=
-				Html::element('img',
-					array('src' => $imagepath . 'greystar.png'));
+
+		$src =	self::$imagepath . 'greystar.png';
+		while ($i <= $this->mMax) {
+			$output .= Html::element('img', array(
+				'src' => $src,
+				'id' => $input_id . '_s_' . $i,
+				'onclick' => 'semanticRating.setrating(' . $i . ",'" . $input_id . "'," .
+					$this->mMax . ');'
+				));
 			$i++;
 		}
 
 		$output .=
-			Html::closeElement('span');
+			Html::closeElement('td') .
+			Html::closeElement('table');
 
 		return $output;
 	}
 
-	public function editRating($cur_value, $input_name, $imagepath) {
-	
-		if (!is_numeric($cur_value) || $cur_value < 0 || $cur_value > 5) {
-			$cur_value = 0;
-		}
-	
-		$output =
-			Html::openElement('table', array('style' => 'display:inline;')) .
-			Html::openElement('td');
-	
-		global $sfgFieldNum;
-		$input_id = "input_$sfgFieldNum";
-		$output .= Html::element('input', array(
-			'type' => 'hidden',
-			'id' => $input_id,
-			'name' => $input_name,
-			'value' => $cur_value
-			));
-	
-		$i = 1;
-	
-		$src =	$imagepath . 'yellowstar.png';
-		while ($i < $cur_value + 1) {
-			$output .= Html::element('img', array(
-				'src' => $src,
-				'id' => $input_id . '_s_' . $i,
-				'onclick' => 'setrating(' . $i . ",'" . $input_id . "'" . ');'
-				));
-			$i++;
-		}
-			
-		$src =	$imagepath . 'greystar.png';
-		while ($i < 6) {
-			$output .= Html::element('img', array(
-				'src' => $src,
-				'id' => $input_id . '_s_' . $i,
-				'onclick' => 'setrating(' . $i . ",'" . $input_id . "'" . ');'
-				));
-			$i++;
-		}
-			
-		$output .=
-			Html::closeElement('td') .
-			Html::closeElement('table');
-	
-		return $output;
+	public static function getParameters() {
+		$params = parent::getParameters();
+		$params[] = array(
+			'name' => 'max',
+			'type' => 'int',
+			'description' => wfMessage('semanticrating-max')->text()
+		);
+		return $params;
+	}
+
+	public function getResourceModuleNames() {
+		return array(
+			'ext.SemanticRating'
+		);
 	}
 }

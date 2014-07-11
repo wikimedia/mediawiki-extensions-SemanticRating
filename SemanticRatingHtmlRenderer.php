@@ -1,3 +1,5 @@
+<?php
+
 /*
  * Copyright (c) 2014 The MITRE Corporation
  *
@@ -20,30 +22,59 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-var semanticRating = (function($) {
+class SemanticRatingHtmlRenderer {
 
-	'use strict';
+	var $imagepath = null;
 
-	return {
-		setrating: function(rating, input_id, max) {
-			$("#" + input_id).attr('value', rating);
-			var i = 1;
-			while (i <= rating) {
-				var star = $("#" + input_id + "_s_" + i);
-				var src = star.attr('src');
-				src = src.replace("grey", "yellow");
-				star.attr('src', src);
-				i++;
-			}
-			while (i <= max) {
-				var star = $("#" + input_id + "_s_" + i);
-				var src = star.attr('src');
-				src = src.replace("yellow", "grey");
-				star.attr('src', src);
-				i++;
-			}
+	public function __construct($imagepath) {
+		$this->imagepath = $imagepath;
+	}
+
+	public function render($parser, $params) {
+
+		if (count($params) > 1) {
+			$rating = $params[1];
+		} else {
+			$rating = 0;
 		}
-	};
-}(jQuery));
+		if (count($params) > 2) {
+			$max = $params[2];
+		} else {
+			$max = $GLOBALS['SemanticRating_DefaultMax'];
+		}
 
-window.semanticRating = semanticRating;
+		$output = Html::openElement('span');
+
+		if ($rating < 0) {
+			$rating = 0;
+		} else if ($rating > $max) {
+			$rating = $max;
+		}
+
+		$i = 1;
+		while ($i <= $rating) {
+			$output .=
+				Html::element('img',
+					array('src' => $this->imagepath . 'yellowstar.png'));
+			$i++;
+		}
+		if ($rating - $i + 1 != 0) {
+			$output .=
+				Html::element('img',
+					array('src' => $this->imagepath . 'halfstar.png'));
+			$i++;
+		}
+		while ($i <= $max) {
+			$output .=
+				Html::element('img',
+					array('src' => $this->imagepath . 'greystar.png'));
+			$i++;
+		}
+
+		$output .=
+			Html::closeElement('span');
+
+		return array($parser->insertStripItem($output, $parser->mStripState),
+			'noparse' => false, 'isHTML' => true);
+	}
+}
