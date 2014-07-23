@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2013 The MITRE Corporation
+ * Copyright (c) 2014 The MITRE Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -25,7 +25,7 @@ if (!defined('MEDIAWIKI')) {
 	die('<b>Error:</b> This file is part of a MediaWiki extension and cannot be run standalone.');
 }
 
-if (version_compare($wgVersion, '1.21', 'lt')) {
+if (version_compare($GLOBALS['wgVersion'], '1.21', 'lt')) {
 	die('<b>Error:</b> This version of SemanticRating is only compatible with MediaWiki 1.21 or above.');
 }
 
@@ -37,9 +37,9 @@ if (version_compare(SF_VERSION, '2.5.2', 'lt')) {
 	die('<b>Error:</b> This version of SemanticRating is only compatible with Semantic Forms 2.5.2 or above.');
 }
 
-$wgExtensionCredits['semantic'][] = array (
+$GLOBALS['wgExtensionCredits']['semantic'][] = array (
 	'name' => 'SemanticRating',
-	'version' => '1.3',
+	'version' => '2.0',
 	'author' => array(
 		'[https://www.mediawiki.org/wiki/User:Cindy.cicalese Cindy Cicalese]'
 	),
@@ -52,56 +52,39 @@ $wgExtensionCredits['semantic'][] = array (
 // for the original idea that inspired this extension and to Kelly Hatfield
 // for an early implementation of this extension.
 
-$wgAutoloadClasses['SemanticRating'] =
-	__DIR__ . '/SemanticRating.class.php';
+$GLOBALS['wgAutoloadClasses']['SemanticRatingHtmlRenderer'] =
+	__DIR__ . '/SemanticRatingHtmlRenderer.php';
 
-$wgMessagesDirs['SemanticRating'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['SemanticRating'] =
+$GLOBALS['wgAutoloadClasses']['SemanticRatingFormInput'] =
+	__DIR__ . '/SemanticRatingFormInput.php';
+
+$GLOBALS['wgMessagesDirs']['SemanticRating'] = __DIR__ . '/i18n';
+$GLOBALS['wgExtensionMessagesFiles']['SemanticRating'] =
 	__DIR__ . '/SemanticRating.i18n.php';
 
-$wgExtensionMessagesFiles['SemanticRatingMagic'] =
+$GLOBALS['wgExtensionMessagesFiles']['SemanticRatingMagic'] =
 	__DIR__ . '/SemanticRating.i18n.magic.php';
 
-$wgResourceModules['ext.SemanticRating'] = array(
+$GLOBALS['wgResourceModules']['ext.SemanticRating'] = array(
 	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'SemanticRating',
 	'scripts' => 'scripts/SemanticRating.js'
 );
 
-$wgHooks['ParserFirstCallInit'][] = 'efSemanticRatingParserFunction_Setup';
-
-function efSemanticRatingParserFunction_Setup (&$parser) {
-	global $SemanticRating_Parse;
-	if (!isset($SemanticRating_Parse)) {
-		$SemanticRating_Parse = true;
+$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function (\Parser &$parser) {
+	if (!array_key_exists('SemanticRating_DefaultMax', $GLOBALS)) {
+		$GLOBALS['SemanticRating_DefaultMax'] = 5;
 	}
-	$parser->setFunctionHook('rating', 'renderRating');
-	global $sfgFormPrinter;
-	$sfgFormPrinter->setInputTypeHook('rating', 'editRating', array());
+	$parser->setFunctionHook('rating', function($parser) {
+		$imagepath = $GLOBALS['wgServer'] . $GLOBALS['wgScriptPath'] .
+			"/extensions/SemanticRating/images/";
+		$semanticRatingHtmlRenderer =
+			new SemanticRatingHtmlRenderer($imagepath);
+		return $semanticRatingHtmlRenderer->render($parser, func_get_args());
+	});
+	$imagepath = $GLOBALS['wgServer'] . $GLOBALS['wgScriptPath'] .
+		"/extensions/SemanticRating/images/";
+	SemanticRatingFormInput::setImagePath($imagepath);
+	$GLOBALS['sfgFormPrinter']->registerInputType('SemanticRatingFormInput');
 	return true;
-}
-
-$SemanticRating_ImagePath = $wgServer . $wgScriptPath .
-	"/extensions/SemanticRating/images/";
-
-function renderRating($parser, $input) {
-	global $SemanticRating_ImagePath;
-	$instance = new SemanticRating;
-	$output = $instance->renderRating($input, $SemanticRating_ImagePath);
-	global $SemanticRating_Parse;
-	if ($SemanticRating_Parse) {
-		$output = array($parser->insertStripItem($output, $parser->mStripState),
-			'noparse' => false, 'isHTML' => true);
-	}
-	return $output;
-}
-
-function editRating($cur_value, $input_name, $is_mandatory, $is_disabled,
-	$field_args) {
-	global $wgOut, $SemanticRating_ImagePath;
-	$wgOut->addModules('ext.SemanticRating');
-	$instance = new SemanticRating;
-	$output = $instance->editRating($cur_value, $input_name,
-		$SemanticRating_ImagePath);
-	return array($output, null);
-}
+};
