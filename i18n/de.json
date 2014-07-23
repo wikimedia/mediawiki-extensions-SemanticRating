@@ -5,5 +5,6 @@
 			"Kghbln"
 		]
 	},
-	"semanticrating-desc": "Ermöglicht es Benutzern, Objekte mit ein bis fünf Sternen zu bewerten"
+	"semanticrating-desc": "Ermöglicht es Benutzern, Objekte mit Sternen zu bewerten",
+	"semanticrating-max": "Die maximale Anzahl an Sternen in einer Bewertung"
 }

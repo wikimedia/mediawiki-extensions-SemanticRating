@@ -4,5 +4,6 @@
 			"Gomoko"
 		]
 	},
-	"semanticrating-desc": "Permet aux utilisateurs de classer les éléments entre 1 et 5 avec des étoiles"
+	"semanticrating-desc": "Permet aux utilisateurs de classer les éléments avec des étoiles",
+	"semanticrating-max": "Le nombre maximum d’étoiles dans un classement"
 }
