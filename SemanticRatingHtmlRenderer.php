@@ -30,7 +30,7 @@ class SemanticRatingHtmlRenderer {
 		$this->imagepath = $imagepath;
 	}
 
-	public function render($parser, $params) {
+	private function render($parser, $params) {
 
 		if (count($params) > 1) {
 			$rating = $params[1];
@@ -43,7 +43,9 @@ class SemanticRatingHtmlRenderer {
 			$max = $GLOBALS['SemanticRating_DefaultMax'];
 		}
 
-		$output = Html::openElement('span');
+		$output = Html::openElement('span', array(
+			'style' => 'white-space:nowrap;'
+		));
 
 		if ($rating < 0) {
 			$rating = 0;
@@ -71,10 +73,41 @@ class SemanticRatingHtmlRenderer {
 			$i++;
 		}
 
-		$output .=
-			Html::closeElement('span');
+		$output .= Html::closeElement('span');
 
+		return $output;
+
+	}
+
+	public function renderInline($parser, $params) {
+		$output = $this->render($parser, $params);
 		return array($parser->insertStripItem($output, $parser->mStripState),
 			'noparse' => false, 'isHTML' => true);
+	}
+
+	public function renderBeforeTitle($parser, $params) {
+		$output = $this->render($parser, $params);
+		$script =<<<END
+jQuery(document).ready(function() {
+	var title = jQuery('#firstHeading').html();
+	jQuery('#firstHeading').html('$output' + ' ' + title);
+});
+END;
+		$script = Html::inlineScript($script);
+		$GLOBALS['wgOut']->addScript($script);
+		return "";
+	}
+
+	public function renderAfterTitle($parser, $params) {
+		$output = $this->render($parser, $params);
+		$script =<<<END
+jQuery(document).ready(function() {
+	var title = jQuery('#firstHeading').html();
+	jQuery('#firstHeading').html(title + ' ' + '$output');
+});
+END;
+		$script = Html::inlineScript($script);
+		$GLOBALS['wgOut']->addScript($script);
+		return "";
 	}
 }

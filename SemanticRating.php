@@ -39,7 +39,7 @@ if (version_compare(SF_VERSION, '2.5.2', 'lt')) {
 
 $GLOBALS['wgExtensionCredits']['semantic'][] = array (
 	'name' => 'SemanticRating',
-	'version' => '2.0',
+	'version' => '2.1',
 	'author' => array(
 		'[https://www.mediawiki.org/wiki/User:Cindy.cicalese Cindy Cicalese]'
 	),
@@ -72,19 +72,31 @@ $GLOBALS['wgResourceModules']['ext.SemanticRating'] = array(
 );
 
 $GLOBALS['wgHooks']['ParserFirstCallInit'][] = function (\Parser &$parser) {
+
 	if (!array_key_exists('SemanticRating_DefaultMax', $GLOBALS)) {
 		$GLOBALS['SemanticRating_DefaultMax'] = 5;
 	}
-	$parser->setFunctionHook('rating', function($parser) {
-		$imagepath = $GLOBALS['wgServer'] . $GLOBALS['wgScriptPath'] .
-			"/extensions/SemanticRating/images/";
-		$semanticRatingHtmlRenderer =
-			new SemanticRatingHtmlRenderer($imagepath);
-		return $semanticRatingHtmlRenderer->render($parser, func_get_args());
-	});
+
 	$imagepath = $GLOBALS['wgServer'] . $GLOBALS['wgScriptPath'] .
 		"/extensions/SemanticRating/images/";
+	$renderer = new SemanticRatingHtmlRenderer($imagepath);
+
+	$parser->setFunctionHook('rating', function($parser) use($renderer) {
+		return $renderer->renderInline($parser, func_get_args());
+	});
+
+	$parser->setFunctionHook('ratingBeforeTitle', function($parser)
+		use($renderer) {
+		return $renderer->renderBeforeTitle($parser, func_get_args());
+	});
+
+	$parser->setFunctionHook('ratingAfterTitle', function($parser)
+		use($renderer) {
+		return $renderer->renderAfterTitle($parser, func_get_args());
+	});
+
 	SemanticRatingFormInput::setImagePath($imagepath);
 	$GLOBALS['sfgFormPrinter']->registerInputType('SemanticRatingFormInput');
+
 	return true;
 };
