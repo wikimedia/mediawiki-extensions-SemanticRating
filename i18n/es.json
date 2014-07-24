@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Macofe"
 		]
 	},
-	"semanticrating-desc": "Permite a los usuarios evaluar los artículos con una escala de 1 a 5 estrellas"
+	"semanticrating-desc": "Permite a los usuarios calificar artículos con estrellas"
 }
