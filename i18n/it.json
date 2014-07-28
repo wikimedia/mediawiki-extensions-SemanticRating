@@ -4,5 +4,6 @@
 			"Beta16"
 		]
 	},
-	"semanticrating-desc": "Consente agli utenti di valutare gli elementi da 1 a 5 con stelle"
+	"semanticrating-desc": "Consente agli utenti di valutare gli elementi con stelle",
+	"semanticrating-max": "Il numero massimo di stelle in una valutazione"
 }
