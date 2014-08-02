@@ -4,5 +4,6 @@
 			"Xuacu"
 		]
 	},
-	"semanticrating-desc": "Permite a los usuarios puntuar los elementos ente 1 y 5 estrelles"
+	"semanticrating-desc": "Permite a los usuarios puntuar los elementos con estrelles",
+	"semanticrating-max": "El númberu máximu d'estrelles de la puntuación"
 }
