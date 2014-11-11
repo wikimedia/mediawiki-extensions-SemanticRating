@@ -25,7 +25,7 @@
 $magicWords = array();
 
 $magicWords['en'] = array(
-	'rating' => array (0, 'rating'),
-	'ratingBeforeTitle' => array (0, 'ratingBeforeTitle'),
-	'ratingAfterTitle' => array (0, 'ratingAfterTitle')
+	'rating' => array ( 0, 'rating' ),
+	'ratingBeforeTitle' => array ( 0, 'ratingBeforeTitle' ),
+	'ratingAfterTitle' => array ( 0, 'ratingAfterTitle' )
 );

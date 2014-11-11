@@ -20,30 +20,33 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-var semanticRating = (function($) {
+var semanticRating = ( function( $ ) {
 
 	'use strict';
 
 	return {
-		setrating: function(rating, input_id, max) {
-			$("#" + input_id).attr('value', rating);
+		setrating: function( rating, inputId, max ) {
+			$( '#' + inputId )
+				.attr( 'value', rating );
 			var i = 1;
-			while (i <= rating) {
-				var star = $("#" + input_id + "_s_" + i);
-				var src = star.attr('src');
-				src = src.replace("grey", "yellow");
-				star.attr('src', src);
+			var star;
+			var src;
+			while ( i <= rating ) {
+				star = $( '#' + inputId + '_s_' + i );
+				src = star.attr( 'src' );
+				src = src.replace( 'grey', 'yellow' );
+				star.attr( 'src', src );
 				i++;
 			}
-			while (i <= max) {
-				var star = $("#" + input_id + "_s_" + i);
-				var src = star.attr('src');
-				src = src.replace("yellow", "grey");
-				star.attr('src', src);
+			while ( i <= max ) {
+				star = $( '#' + inputId + '_s_' + i );
+				src = star.attr( 'src' );
+				src = src.replace( 'yellow', 'grey' );
+				star.attr( 'src', src );
 				i++;
 			}
 		}
 	};
-}(jQuery));
+}( jQuery ) );
 
 window.semanticRating = semanticRating;
