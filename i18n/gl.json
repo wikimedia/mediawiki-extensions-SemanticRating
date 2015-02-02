@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño"
+			"Toliño",
+			"Elisardojm"
 		]
 	},
-	"semanticrating-desc": "Permite aos usuarios avaliar os elementos entre 1 e 5 estrelas"
+	"semanticrating-desc": "Permite aos usuarios avaliar os elementos con estrelas"
 }
