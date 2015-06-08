@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Siebrand"
+			"Siebrand",
+			"Rangekill"
 		]
 	},
-	"semanticrating-desc": "Maakt het voor gebruikers mogelijk items te waarderen met 1 tot 5 sterren"
+	"semanticrating-desc": "Maakt het voor gebruikers mogelijk items te waarderen met 1 tot 5 sterren",
+	"semanticrating-max": "Het maximale aantal sterren in een beoordeling"
 }
