@@ -42,14 +42,16 @@ $GLOBALS['wgExtensionCredits']['semantic'][] = array (
 	'name' => 'SemanticRating',
 	'version' => '2.2',
 	'author' => array(
-		'[https://www.mediawiki.org/wiki/User:Cindy.cicalese Cindy Cicalese]'
+		'[https://www.mediawiki.org/wiki/User:Cindy.cicalese Cindy Cicalese]',
+		'...'
 	),
 	'descriptionmsg' => 'semanticrating-desc',
-	'url' => 'https://www.mediawiki.org/wiki/Extension:Semantic_Rating'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Semantic_Rating',
+	'license-name' => 'MIT'
 );
 
 // Special thanks to
-// [https://www.mediawiki.org/wiki/User:Bernadette Bernadette Clemente]
+// [https://www.mediawiki.org/wiki/User:Bernadette_Clemente Bernadette Clemente]
 // for the original idea that inspired this extension and to Kelly Hatfield
 // for an early implementation of this extension.
 
