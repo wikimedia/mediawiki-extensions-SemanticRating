@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Copyright (c) 2014 The MITRE Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -21,12 +21,19 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
+/**
+ * Special thanks to
+ * [https://www.mediawiki.org/wiki/User:Riverbees Bernadette Clemente]
+ * for the original idea that inspired this extension and to Kelly Hatfield
+ * for an early implementation of this extension.
+ */
+
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( '<b>Error:</b> This file is part of a MediaWiki extension and cannot be run standalone.' );
 }
 
 if ( version_compare( $GLOBALS['wgVersion'], '1.21', 'lt' ) ) {
-	die( '<b>Error:</b> This version of SemanticRating is only compatible with MediaWiki 1.21 or above.' );
+	die( '<b>Error:</b> This version of Semantic Rating is only compatible with MediaWiki 1.21 or above.' );
 }
 
 if ( !defined( 'SF_VERSION' ) ) {
@@ -34,13 +41,13 @@ if ( !defined( 'SF_VERSION' ) ) {
 }
 
 if ( version_compare( SF_VERSION, '2.5.2', 'lt' ) ) {
-	die( '<b>Error:</b> This version of SemanticRating is only compatible with Semantic Forms 2.5.2 or above.' );
+	die( '<b>Error:</b> This version of Semantic Rating is only compatible with Semantic Forms 2.5.2 or above.' );
 }
 
 $GLOBALS['wgExtensionCredits']['semantic'][] = array (
 	'path' => __FILE__,
-	'name' => 'SemanticRating',
-	'version' => '2.2',
+	'name' => 'Semantic Rating',
+	'version' => '2.2.1',
 	'author' => array(
 		'[https://www.mediawiki.org/wiki/User:Cindy.cicalese Cindy Cicalese]',
 		'...'
@@ -49,11 +56,6 @@ $GLOBALS['wgExtensionCredits']['semantic'][] = array (
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Semantic_Rating',
 	'license-name' => 'MIT'
 );
-
-// Special thanks to
-// [https://www.mediawiki.org/wiki/User:Bernadette_Clemente Bernadette Clemente]
-// for the original idea that inspired this extension and to Kelly Hatfield
-// for an early implementation of this extension.
 
 $GLOBALS['wgAutoloadClasses']['SemanticRating'] =
 	__DIR__ . '/SemanticRating.class.php';
