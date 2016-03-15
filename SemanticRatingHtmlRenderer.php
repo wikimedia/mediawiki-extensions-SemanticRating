@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2014 The MITRE Corporation
+ * Copyright (c) 2014-2016 The MITRE Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -40,7 +40,7 @@ class SemanticRatingHtmlRenderer {
 		if ( count( $params ) > 2 ) {
 			$max = $params[2];
 		} else {
-			$max = $GLOBALS['SemanticRating_DefaultMax'];
+			$max = $GLOBALS['wgSemanticRating_DefaultMax'];
 		}
 
 		$output = Html::openElement( 'span', array(
@@ -86,34 +86,22 @@ class SemanticRatingHtmlRenderer {
 	}
 
 	public function renderBeforeTitle( $parser, $params ) {
-		$output = $this->render( $parser, $params );
-		$cssSelector = $GLOBALS['SemanticRating_CSSSelector'];
-		$script = <<<END
-jQuery( document ).ready( function() {
-	jQuery( '$cssSelector' ).each( function( index ) {
-		var title = jQuery( this ).html();
-		jQuery( this ).html( '$output' + title );
-	} );
-} );
-END;
-		$script = Html::inlineScript( $script );
-		$GLOBALS['wgOut']->addScript( $script );
+		$out = $parser->getOutput();
+		$rating = $this->render( $parser, $params ) . "&nbsp;";
+		$out->addJsConfigVars( 'SemanticRatingBefore', $rating );
+		$cssSelector = $GLOBALS['wgSemanticRating_CSSSelector'];
+		$out->addJsConfigVars( 'SemanticRatingSelector', $cssSelector );
+		$out->addModules( 'ext.SemanticRating' );
 		return "";
 	}
 
 	public function renderAfterTitle( $parser, $params ) {
-		$output = $this->render( $parser, $params );
-		$cssSelector = $GLOBALS['SemanticRating_CSSSelector'];
-		$script = <<<END
-jQuery( document ).ready( function() {
-	jQuery( '$cssSelector' ).each( function( index ) {
-		var title = jQuery( this ).html();
-		jQuery( this ).html( title + '$output' );
-	} );
-} );
-END;
-		$script = Html::inlineScript( $script );
-		$GLOBALS['wgOut']->addScript( $script );
+		$out = $parser->getOutput();
+		$rating = "&nbsp;" . $this->render( $parser, $params );
+		$out->addJsConfigVars( 'SemanticRatingAfter', $rating );
+		$cssSelector = $GLOBALS['wgSemanticRating_CSSSelector'];
+		$out->addJsConfigVars( 'SemanticRatingSelector', $cssSelector );
+		$out->addModules( 'ext.SemanticRating' );
 		return "";
 	}
 }

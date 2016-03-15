@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 The MITRE Corporation
+ * Copyright (c) 2014-2016 The MITRE Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -50,3 +50,21 @@ var semanticRating = ( function( $ ) {
 }( jQuery ) );
 
 window.semanticRating = semanticRating;
+
+$( function() {
+	if ( mw.config.exists( 'SemanticRatingSelector' ) ) {
+		var selector = mw.config.get( 'SemanticRatingSelector' );
+		if ( mw.config.exists( 'SemanticRatingBefore' ) ) {
+			var before = mw.config.get( 'SemanticRatingBefore' );
+			jQuery( selector ).each( function( index ) {
+				jQuery( this ).prepend(before);
+			} );
+		}
+		if ( mw.config.exists( 'SemanticRatingAfter' ) ) {
+			var after = mw.config.get( 'SemanticRatingAfter' );
+			jQuery( selector ).each( function( index ) {
+				jQuery( this ).append(after);
+			} );
+		}
+	}
+});

@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2014 The MITRE Corporation
+ * Copyright (c) 2014-2016 The MITRE Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -36,7 +36,7 @@ class SemanticRatingFormInput extends SFFormInput {
 		if ( array_key_exists( 'max', $this->mOtherArgs ) ) {
 			$this->mMax = $this->mOtherArgs['max'];
 		} else {
-			$this->mMax = $GLOBALS['SemanticRating_DefaultMax'];
+			$this->mMax = $GLOBALS['wgSemanticRating_DefaultMax'];
 		}
 	}
 
