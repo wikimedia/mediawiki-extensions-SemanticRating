@@ -44,9 +44,6 @@ class SemanticRating {
 			return $renderer->renderAfterTitle( $parser, func_get_args() );
 		} );
 
-		SemanticRatingFormInput::setImagePath( $imagepath );
-		$GLOBALS['sfgFormPrinter']->registerInputType( 'SemanticRatingFormInput' );
-
 		return true;
 	}
 }

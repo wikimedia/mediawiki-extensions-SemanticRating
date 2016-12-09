@@ -1,6 +1,6 @@
 {
 	"name": "Semantic Rating",
-	"version": "3.0",
+	"version": "4.0",
 	"author": [
 		"[https://www.mediawiki.org/wiki/User:Cindy.cicalese Cindy Cicalese]",
 		"..."
@@ -19,8 +19,7 @@
 	},
 	"AutoloadClasses": {
 		"SemanticRating": "SemanticRating.php",
-		"SemanticRatingHtmlRenderer": "SemanticRatingHtmlRenderer.php",
-		"SemanticRatingFormInput": "SemanticRatingFormInput.php"
+		"SemanticRatingHtmlRenderer": "SemanticRatingHtmlRenderer.php"
 	},
 	"ResourceModules": {
 		"ext.SemanticRating": {
