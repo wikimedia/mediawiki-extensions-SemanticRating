@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cwlin0416"
+			"Cwlin0416",
+			"Kly"
 		]
 	},
-	"semanticrating-desc": "允許使用者可以使用 1 至 5 顆星評分項目"
+	"semanticrating-desc": "允許使用者可使用星級來評分項目"
 }
