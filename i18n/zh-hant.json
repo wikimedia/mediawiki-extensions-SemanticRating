@@ -5,5 +5,6 @@
 			"Kly"
 		]
 	},
-	"semanticrating-desc": "允許使用者可使用星級來評分項目"
+	"semanticrating-desc": "允許使用者可使用星級來評分項目",
+	"semanticrating-max": "評分裡最多的星級數目"
 }
