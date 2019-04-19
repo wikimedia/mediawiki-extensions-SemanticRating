@@ -34,6 +34,9 @@ class SemanticRatingHtmlRenderer {
 
 		if ( count( $params ) > 1 ) {
 			$rating = $params[1];
+			if ( !is_numeric( $rating ) ) {
+				$rating = 0;
+			}
 		} else {
 			$rating = 0;
 		}
