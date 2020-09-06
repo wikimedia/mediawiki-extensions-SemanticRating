@@ -20,17 +20,17 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-var semanticRating = ( function( $ ) {
+var semanticRating = ( function ( $ ) {
 
 	'use strict';
 
 	return {
-		setrating: function( rating, inputId, max ) {
+		setrating: function ( rating, inputId, max ) {
 			$( '#' + inputId )
 				.attr( 'value', rating );
-			var i = 1;
-			var star;
-			var src;
+			var i = 1,
+				star,
+				src;
 			while ( i <= rating ) {
 				star = $( '#' + inputId + '_s_' + i );
 				src = star.attr( 'src' );
@@ -51,20 +51,20 @@ var semanticRating = ( function( $ ) {
 
 window.semanticRating = semanticRating;
 
-$( function() {
+$( function () {
 	if ( mw.config.exists( 'SemanticRatingSelector' ) ) {
 		var selector = mw.config.get( 'SemanticRatingSelector' );
 		if ( mw.config.exists( 'SemanticRatingBefore' ) ) {
 			var before = mw.config.get( 'SemanticRatingBefore' );
-			jQuery( selector ).each( function( index ) {
-				jQuery( this ).prepend(before);
+			jQuery( selector ).each( function ( index ) {
+				jQuery( this ).prepend( before );
 			} );
 		}
 		if ( mw.config.exists( 'SemanticRatingAfter' ) ) {
 			var after = mw.config.get( 'SemanticRatingAfter' );
-			jQuery( selector ).each( function( index ) {
-				jQuery( this ).append(after);
+			jQuery( selector ).each( function ( index ) {
+				jQuery( this ).append( after );
 			} );
 		}
 	}
-});
+} );
