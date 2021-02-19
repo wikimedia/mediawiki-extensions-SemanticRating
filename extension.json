@@ -9,6 +9,9 @@
 	"descriptionmsg": "semanticrating-desc",
 	"license-name": "MIT",
 	"type": "semantic",
+	"requires": {
+		"MediaWiki": ">= 1.12.0"
+	},
 	"MessagesDirs": {
 		"SemanticRating": [
 			"i18n"

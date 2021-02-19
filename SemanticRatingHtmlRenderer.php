@@ -84,7 +84,7 @@ class SemanticRatingHtmlRenderer {
 
 	public function renderInline( $parser, $params ) {
 		$output = $this->render( $parser, $params );
-		return array( $parser->insertStripItem( $output, $parser->mStripState ),
+		return array( $parser->insertStripItem( $output ),
 			'noparse' => false, 'isHTML' => true );
 	}
 
