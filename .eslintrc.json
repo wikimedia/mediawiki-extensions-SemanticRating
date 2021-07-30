@@ -10,7 +10,6 @@
 	},
 	"rules": {
 		"no-implicit-globals": "warn",
-		"vars-on-top": "warn",
 		"no-unused-vars": "warn",
 		"no-jquery/variable-pattern": "warn"
 	}
