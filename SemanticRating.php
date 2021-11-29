@@ -26,7 +26,7 @@ class SemanticRating {
 
 	public static function setup( \Parser &$parser ) {
 
-		$imagepath = $GLOBALS['wgServer'] . $GLOBALS['wgScriptPath'] .
+		$imagepath = $GLOBALS['wgScriptPath'] .
 			"/extensions/SemanticRating/images/";
 		$renderer = new SemanticRatingHtmlRenderer( $imagepath );
 
