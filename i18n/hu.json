@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Krisztina"
+		]
+	},
+	"semanticrating-desc": "Lehetővé teszi a felhasználók számára, hogy elemeket csillagokkal értékeljenek",
+	"semanticrating-max": "Az értékeléskor adható legtöb csillag száma"
+}
