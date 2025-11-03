@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Html\Html;
+
 /*
  * Copyright (c) 2014-2016 The MITRE Corporation
  *
