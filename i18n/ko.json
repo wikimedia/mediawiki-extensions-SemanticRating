@@ -4,8 +4,10 @@
 			"Hwangjy9",
 			"Hym411",
 			"Revi",
-			"Yearning"
+			"Yearning",
+			"Tensama0415"
 		]
 	},
-	"semanticrating-desc": "사용자에게 항목의 별점을 매길 수 있게 합니다"
+	"semanticrating-desc": "사용자에게 항목의 별점을 매길 수 있게 합니다",
+	"semanticrating-max": "평점의 최대 별 개수"
 }
