@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Tensama0415"
 		]
 	},
-	"semanticrating-desc": "利用者が項目を星印で評価できるようにする"
+	"semanticrating-desc": "利用者が項目を星印で評価できるようにする",
+	"semanticrating-max": "評価に付けられる星の最大数"
 }
