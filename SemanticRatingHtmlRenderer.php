@@ -96,7 +96,7 @@ class SemanticRatingHtmlRenderer {
 		$out->addJsConfigVars( 'SemanticRatingBefore', $rating );
 		$cssSelector = $GLOBALS['wgSemanticRating_CSSSelector'];
 		$out->addJsConfigVars( 'SemanticRatingSelector', $cssSelector );
-		$out->addModules( 'ext.SemanticRating' );
+		$out->addModules( [ 'ext.SemanticRating' ] );
 		return "";
 	}
 
@@ -106,7 +106,7 @@ class SemanticRatingHtmlRenderer {
 		$out->addJsConfigVars( 'SemanticRatingAfter', $rating );
 		$cssSelector = $GLOBALS['wgSemanticRating_CSSSelector'];
 		$out->addJsConfigVars( 'SemanticRatingSelector', $cssSelector );
-		$out->addModules( 'ext.SemanticRating' );
+		$out->addModules( [ 'ext.SemanticRating' ] );
 		return "";
 	}
 }
