@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"semanticrating-desc": "Umožňuje používateľom hodnotiť položky hviezdičkami",
+	"semanticrating-max": "Maximálny počet hviezdičiek v hodnotení"
+}
